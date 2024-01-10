@@ -1,0 +1,292 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 1 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+let a = 5;
+export default a;
+// default export only export one variable
+
+
+// to access the export in other element
+import a from('path')
+--------------------------------------------------------------------------------
+let b;
+let c;
+export const b;
+export const c;
+// const export:- 
+// to access the export in other element
+import {b, c} from('path')
+// we have to use same name to access element
+// to export more than one variable we use const export
+--------------------------------------------------------------------------------
+rafce
+
+es7+ react/reduce/
+
+--------------------------------------------------------------------------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 2 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+1. if we use div in return it will also see in real-dom. so hide that thing there is two way first use fragment that provide by react or use empty open and close tag of html
+
+import {fragment} from react
+
+//
+return (
+    <fragment>
+    -- other code --
+    </fragment>
+)
+//
+
+
+2. to change update in real-dom and virtual dom we user useState to create variable to let know react what to change in doms
+import {useState} from react;
+
+3. we can not pass parameter function direct in react onClick or kind of method in react so we wrapper it in another non parameter function to use in onClick with parameter
+
+we use fat arrow function in react all time until unless we need 
+
+
+--------------------------------------------------------------------------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 3 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. two way binding:- to save user/client data in view/browser and change with react we first tell d react first that user click something then react save in useState and then transfer to view/browser.
+this method only use for forms.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 4 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+to install tailwind in react that created using Vite 
+1. go to tailwind css website 
+2. then click on get start button
+3. under the installation click on option frameworks guide
+4. click on Vite and follow the instruction of 'using react'
+
+
+--- react ----
+import index.css file in main.jxs
+now search the properties and apply using class in that element
+
+jsx file of react can render array by default but it can not render object and throw error. so we can not direct pass json or object data to jsx 
+
+so we use map method instead of forEach loop to render data of json 
+
+when we use react throw one error that every item should have uniq key properties so react know that are different and not copy of each other so we pass index from map as well so react know the difference in them  
+
+we can not push data in useState by using push method so we create another normal array and copy that array in new array using [...oldArray] this  called spread operator and them we push new data to new array and then pass threw useState and replace old array with new array
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 5 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+today we use localStorage to store data that not going to delete until you delete it.
+
+open in browser
+press clt + shift + i to open console window
+then got to application section under that you will find localStorage
+
+localStorage.setItem('key', 'here pass the data');
+localStorage.getItem('key')// to get user pass the key
+
+we use react toastify to give alert msg 
+npm install --save react-toastify
+
+if brake properties/attribute, there is problem to store data in react because data can be transfer from parent to child 
+
+create components folder inside src folder 
+create two files
+1. Create.jsx 
+2. Show.jsx 
+
+import boiler plat and the paste code according create and show data in different file according there name 
+
+to share common data in both created file we pass data as argument and access as parameter in those file
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 6 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+there is another way to implement class
+
+1. inline
+2. internal
+3. external 
+and more
+
+1. Inline :- first is to add style tags and apply css properties in writing in camelCase style. we have use two curly brackets to apply css properties 
+Ex:- <h1 style={{backgroundColor: "red", color:"yellow"}}></h1>
+
+2. Internal :- to apply internal css we create a object that contain css properties and pass in style tag of that element that we want to apply css
+Ex:- 
+--other code
+  const App = ()=>{
+    --other code
+    const internalCss = {
+        backgroundColor :"black",
+        color:"white"
+    }
+    return(
+        <>
+        <h1 style={internalCss}>ere come ur text</h1>
+        </>
+    )
+  }
+
+3. External :- there is problem with external css if we apply that css this will effect all the components that present(child, grand-child, parent). this apply globally
+
+that why we use Name.module.css to import septate css style
+
+//---------
+ to create route in react we have to install 
+
+ npm i react-router-dom
+
+ and then in main.jsx file. wrapped element in BrowserRouter element 
+ for going in different route we use <LINK to="/"> </LINK> tag instead of <a></a> tag
+
+ and we add <Router></Router> tag and define that route should we open in that route in <Rout path='/' element={<PageTag/>}/> tag
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 7 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To check which is tag is open of navbar we use NavLink.
+NavLink provide that witch tag is active or opened in navbar. There is two method to check.
+1. we apply a function in style attribute that element and pass a parameter that return the value in "parameter.isActive".
+Ex:- <NavLink
+                style={(e) => {
+                    return {
+                        color: e.isActive ? "tomato" : "",
+                        fontWeight: e.isActive ? "bold" : "",
+                    };
+                }}
+                to="/"
+            >
+                Home
+      </NavLink>
+
+2. we pass same function in className attribute and return value in array
+Ex:- <NavLink
+                className={(e) => {
+                    return [
+                        e.isActive ? "text-red-300 " : "",
+                        e.isActive ? "font-bold" : "",
+                    ].join(" ");
+                }}
+                to="/create"
+            >
+                Create
+            </NavLink>
+
+--------------------------------------------------------------
+**if we want to programmatically to open new page/link after completing task then we use "useNavigate". 
+
+Ex:- const navigate = useNavigate();
+const anyTask = ()=>{
+  // task code 
+  navigate("/address");
+}
+
+// if we pass -1/+1 or any value mean we want that much page back/forward.
+
+
+--------------------------------------------------------------
+dynamic routing:- 
+<Route path="/show/details/:title" element={<Details />} />
+
+we use useParams to access params data in new open page.
+
+--------------------------------------------------------------
+there is problem to share data in react we can only share data parent to child but we can not share data from child to parent.
+Context API(single source):- We use Context API to share data from any route by doing data centralized.
+
+Redux Tool kit (Multiple source):- it is also same but it can handle multiple data in easy way rather then Context API.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 8 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+there is three cycle method in react creation(Mounting), deletion(Unmounting) and updation(updating). 
+
+if we want to load data when we open or without clicking a button so we use useEffect for that.
+
+useEffect :- UseEffect is a React Hook that allows developers to manage side effects and state changes in functional components. This includes: 
+Fetching data from an API
+Updating the state
+Updating the DOM
+Setting up event listeners
+
+API:- to transfer/connect data between server and frontend the way we use is called api(Application Programming Interface). 
+
+Fetch:- The Fetch API is a feature that allows you to make HTTP requests to a web server. It's built into modern browsers, so you don't need additional libraries or packages to use it. 
+The fetch() method.
+
+Axios API :- Axios is a popular JavaScript library used for making HTTP requests from a web browser or Node.js. It is a promise-based library, which means that it uses promises to handle the asynchronous nature of HTTP requests. This makes it easier to write code that is both readable and maintainable.
+Axios is also very versatile. It can be used to make all sorts of HTTP requests, including GET, POST, PUT, and DELETE. It also supports a variety of data formats, including JSON, XML, and FormData.
+
+import axios from "axios";
+
+Ex:- const getproducts = async () => {
+        try {
+            const { data } = await axios.get(
+                "https://fakestoreapi.com/products"
+            );
+            setproducts(data);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+this method can not be called directly so we use useEffect hook method.
+
+useEffect(() => {
+    if (!products) getproducts();
+},[])
+
+// if we want that react doest not load all the components again and again and only load those components who is changed so we pass [] brackets in last of useEffect.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 9 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+open redux toolkit website and follow steps.
+
+Install Redux Toolkit and React-Redux
+npm install @reduxjs/toolkit react-redux
+
+
+Create a Redux Store
+Provide the Redux Store to React
+Create a Redux State Slice
+Add Slice Reducers to the Store
+Use Redux State and Actions in React Components
+
+
+ useDispatch:- to call action within in it and pass the value that we want manipulate.
+ useSelector:- to call data that we want to use. it is return a callback function in it and parameter state.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////----- Day 10 -----\\\\\\\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Asynchronous data calling in redux toolkit
+
+we can not use method like tryCatch/.then method those make asynchronous code to synchronous in reducer. or we can say that we can not action asynchronous.
+
+so we have to make a function out of reducers. we can make in same file or we make another file to make that function.
+
+we create a function and pass another function in it and we pass state, action as parameter of function. and we use 
+
